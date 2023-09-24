@@ -18,24 +18,23 @@
 | category   | text       | NULL: false                    |
 | price      | integer    | NULL: false                    |
 | user       | references | NULL: false, foreign_key: true |
-  image
 
 ## Assosiation
 - belongs_to :users
 - belongs_to :recieves
 
-## buyersテーブル
+## ordersテーブル
 | Column  | Type       | Options                        |
 | ------- | ---------- | -----------------------------  |
 | user    | references | NULL: false, foreign_key: true |
-| recieve | references | NULL: false, foreign_key: true |
+|  | references | NULL: false, foreign_key: true |
 
 ## Assosiation
 - has_many :item_users
 - has_one :users
 - has_one :recieve
 
-## recievesテーブル
+## addressesテーブル
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
 | item    | text       | NULL:false, foreign_key: true |
