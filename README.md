@@ -7,12 +7,10 @@
 | encrypted_password  | string | NULL: false               |
 | name_kanji          | string | NULL: false               |
 | name_kana           | string | NULL: false               |
-| birth_year          | integer| NULL: false               |
-| birth_month         | integer| NULL: false               |
-| birth_day           | integer| NULL: false               |
+| birth_data_id       | integer| NULL: false               |
 ## Assosiation
-- has_many :item
-- has_one :orders
+- has_many :items
+- has_many :orders_address
 
 ## Itemsテーブル
 | Column       | Type       | Options                        |
@@ -29,7 +27,7 @@
 | profit_id    | integer    | NULL: false                    |
 | user         | references | NULL: false, foreign_key: true |
 ## Assosiation
-- belongs_to :users
+- belongs_to :user
 - has_many :address_orders
 
 ## Addressesテーブル
@@ -44,14 +42,14 @@
 | building       | string     | NULL: false                    |
 | phone_number   | integer    | NULL: false                    |
 ## Assosiation
-- has_many :items
-- has_one :orders
+- has_many :orders
 
 ## ordersテーブル
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
 | user    | references | NULL:false, foreign_key: true |
-| address | references | NULL:false, foreign_key: true |
+| item    | references | NULL:false, foreign_key: true |
 ## Assosiation
-- has_one :users
-- belongs_to :address
+- has_many :users
+- belongs_to :addresses_item
+-
