@@ -5,12 +5,14 @@
 | nickname            | string | NULL: false               |
 | email               | string | NULL: false, unique: true |
 | encrypted_password  | string | NULL: false               |
-| name_kanji          | string | NULL: false               |
-| name_kana           | string | NULL: false               |
-| birth_data_id       | integer| NULL: false               |
+| kanji_sei           | string | NULL: false               |
+| kanji_mei           | string | NULL: false               |
+| kana_sei            | string | NULL: false               |
+| kana_mei            | string | NULL: false               |
+| yyyymmdd            | integer| NULL: false               |
 ## Assosiation
 - has_many :items
-- has_many :orders_address
+- has_many :orders
 
 ## Itemsテーブル
 | Column       | Type       | Options                        |
@@ -23,26 +25,23 @@
 | prefecture_id| integer    | NULL: false                    |
 | scheduled_id | integer    | NULL: false                    |
 | price        | integer    | NULL: false                    |
-| add_tax_id   | integer    | NULL: false                    |
-| profit_id    | integer    | NULL: false                    |
 | user         | references | NULL: false, foreign_key: true |
 ## Assosiation
 - belongs_to :user
-- has_many :address_orders
+- has_one :order
 
 ## Addressesテーブル
 | Column         | Type       | Options                        |
 | -------        | ---------- | -----------------------------  |
 | oder           | references | NULL: false, foreign_key: true |
-| item           | references | NULL: false, foreign_key: true |
-| postal_code_id | integer    | NULL: false                    |
+| postal_code    | string     | NULL: false                    |
 | prefecture_id  | integer    | NULL: false                    |
 | city           | string     | NULL: false                    |
 | address        | string     | NULL: false                    |
-| building       | string     | NULL: false                    |
-| phone_number   | integer    | NULL: false                    |
+| building       | string     |                                |
+| phone_number   | string     | NULL: false                    |
 ## Assosiation
-- has_many :orders
+- belongs_to :order
 
 ## ordersテーブル
 | Column  | Type       | Options                       |
@@ -50,6 +49,6 @@
 | user    | references | NULL:false, foreign_key: true |
 | item    | references | NULL:false, foreign_key: true |
 ## Assosiation
-- has_many :users
-- belongs_to :addresses_item
--
+- belongs_to :user
+- belongs_to :item
+- has_one :address
