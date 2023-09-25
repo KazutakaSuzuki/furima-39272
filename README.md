@@ -9,7 +9,7 @@
 | kanji_mei           | string | NULL: false               |
 | kana_sei            | string | NULL: false               |
 | kana_mei            | string | NULL: false               |
-| yyyymmdd            | integer| NULL: false               |
+| birthday            | date   | NULL: false               |
 ## Assosiation
 - has_many :items
 - has_many :orders
