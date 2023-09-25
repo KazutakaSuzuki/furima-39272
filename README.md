@@ -16,7 +16,7 @@
 
 ## Itemsテーブル
 | Column       | Type       | Options                        |
-| ----------   | ---------- | ----------------------------   |
+| ------------ | ---------- | ------------------------------ |
 | item_name    | string     | NULL: false                    |
 | explain      | text       | NULL: false                    |
 | category_id  | integer    | NULL: false                    |
@@ -32,8 +32,8 @@
 
 ## Addressesテーブル
 | Column         | Type       | Options                        |
-| -------        | ---------- | -----------------------------  |
-| oder           | references | NULL: false, foreign_key: true |
+| -------------- | ---------- | ------------------------------ |
+| order          | references | NULL: false, foreign_key: true |
 | postal_code    | string     | NULL: false                    |
 | prefecture_id  | integer    | NULL: false                    |
 | city           | string     | NULL: false                    |
