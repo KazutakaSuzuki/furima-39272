@@ -5,15 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i
          VALID_FULLWIDTH_REGEX = /\A[ぁ-んァ-ン一-龯々]+\z/
-         VALID_KANAWIDTH_REGEX = /\A[ぁ-んァ-ン]+\z/
+         VALID_KANAWIDTH_REGEX = /\A[ァ-ン]+\z/
 
 
-  validates :nickname,  presence: true
-  validates :birthday,  presence: true
-  validates :kanji_sei, presence: true, format: { with: VALID_FULLWIDTH_REGEX, message: "is invalid. Input full-width characters" }
-  validates :kanji_mei, presence: true, format: { with: VALID_FULLWIDTH_REGEX, message: "is invalid. Input full-width characters" }
-  validates :kana_sei,  presence: true, format: { with: VALID_KANAWIDTH_REGEX, message: "is invalid. Input full-width katakana characters" }
-  validates :kana_mei,  presence: true, format: { with: VALID_KANAWIDTH_REGEX, message: "is invalid. Input full-width katakana characters" }
-  validates :password,  presence: true, format: { with: VALID_PASSWORD_REGEX, message: "is invalid. Include both letters and numbers" }
+  validates :nickname,         presence: true
+  validates :birthday,         presence: true
+  validates :last_name,        presence: true, format: { with: VALID_FULLWIDTH_REGEX, message: "is invalid. Input full-width characters" }
+  validates :first_name,       presence: true, format: { with: VALID_FULLWIDTH_REGEX, message: "is invalid. Input full-width characters" }
+  validates :last_name_kana,   presence: true, format: { with: VALID_KANAWIDTH_REGEX, message: "is invalid. Input full-width katakana characters" }
+  validates :first_name_kana,  presence: true, format: { with: VALID_KANAWIDTH_REGEX, message: "is invalid. Input full-width katakana characters" }
+  validates :password,         presence: true, format: { with: VALID_PASSWORD_REGEX, message: "is invalid. Include both letters and numbers" }
 
 end

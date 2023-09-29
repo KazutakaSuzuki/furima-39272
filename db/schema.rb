@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2023_09_26_102722) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
-    t.string "kanji_sei", default: "", null: false
-    t.string "kanji_mei", null: false
-    t.string "kana_sei", default: "", null: false
-    t.string "kana_mei", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", default: "", null: false
+    t.string "first_name_kana", null: false
     t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
