@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
   describe 'ユーザー管理機能' do
-    # ユーザー新規登録についのテストコード
     it 'メールアドレスが必須であること。' do
       @user = FactoryBot.build(:user)
       @user.email = ''
