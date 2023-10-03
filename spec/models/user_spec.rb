@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it 'メールアドレスが一意性であること' do
-        @user = FactoryBot.build(:user)
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
@@ -69,7 +68,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it '生年月日が空だと登録できない' do
-        @user = FactoryBot.build(:user)
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
