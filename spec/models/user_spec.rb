@@ -14,7 +14,6 @@ RSpec.describe User, type: :model do
 
     context '新規登録できないとき' do
       it 'メールアドレスが必須であること' do
-        @user = FactoryBot.build(:user)
         @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
