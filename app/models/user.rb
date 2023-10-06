@@ -20,4 +20,9 @@ class User < ApplicationRecord
                                format: { with: VALID_KANAWIDTH_REGEX, message: 'is invalid. Input full-width katakana characters' }
   validates :password,
             format: { with: VALID_PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers' }
+
+
+  has_many :items
+  has_many :orders
+
 end
