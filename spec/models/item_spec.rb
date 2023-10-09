@@ -84,6 +84,37 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
+
+      it 'userが紐づいていなければ出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
+      it 'カテゴリーに「1」が選択されている場合は出品できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it '商品の状態に「1」が選択されている場合は出品できない' do
+        @item.quality_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Quality can't be blank")
+      end
+      it '配送料の負担に「1」が選択されている場合は出品できない' do
+        @item.fee_status_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee status can't be blank")
+      end
+      it '発送元の地域に「1」が選択されている場合は出品できない' do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it '発送までの日数に「1」が選択されている場合は出品できない' do
+        @item.schedule_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Schedule can't be blank")
+      end
     end
   end
 end

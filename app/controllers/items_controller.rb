@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_instore, except: [:index]
 
   def index
-    #@item = Item.order('created_at DESC')
+    # @item = Item.order('created_at DESC')
   end
 
   def new
