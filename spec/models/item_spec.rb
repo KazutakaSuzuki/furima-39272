@@ -14,8 +14,7 @@ RSpec.describe Item, type: :model do
 
     context '商品を出品できない' do
       it '商品画像が必須である' do
-        @item.image = ''
-        @item.create
+        @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")      
       end
@@ -25,10 +24,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Item name can't be blank")      
       end
       it '商品名が40文字以上では出品できない' do
-        @item.item_name = item_name(length: 50)
-
+        @item.item_name = 'a' * 41
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item Name is too long (maximum is 40 characters")             
+        expect(@item.errors.full_messages).to include("Item name is too long (maximum is 40 characters)")             
       end
       it '商品の説明が必須である' do
         @item.explain = ''
@@ -36,10 +34,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Explain can't be blank")      
       end
       it '商品の説明が1,000文字以上では出品できない' do
-        @item.explain = explain(max_length: 1500)
+        @item.explain = 'a' * 1001
         @item.save
         @item.valid?
-        expect(@item.errors.full_messages).to include("Explain is too long (maximum is 1000 characters")             
+        expect(@item.errors.full_messages).to include("Explain is too long (maximum is 1000 characters)")             
       end
       it 'カテゴリーの情報が必須である' do
         @item.category_id = ''
