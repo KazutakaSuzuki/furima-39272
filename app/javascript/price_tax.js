@@ -8,7 +8,6 @@ addTax.innerHTML = (Math.floor(inputValue*0.1));
 
 const myProfit = document.getElementById("profit");
 const taxValue = inputValue*0.1
-  console.log(taxValue)
 myProfit.innerHTML = (Math.floor(inputValue - taxValue));
 })});
 
