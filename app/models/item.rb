@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :fee_status
   belongs_to :prefecture
   belongs_to :schedule
-  has_one :order
+  #has_one :order
   has_one_attached :image
 
   validates :image, presence: true
