@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :item do
-
     association :user
     item_name { Faker::Commerce.product_name }
-    price { Faker::Number.between(from: 300, to: 9999999) }
- 
+    price { Faker::Number.between(from: 300, to: 9_999_999) }
+
     explain             { 'あああああああああ' }
     category_id         { 2 }
     quality_id          { 2 }
