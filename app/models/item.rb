@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :schedule
   # has_one :order
   has_one_attached :image
+  belongs_to_active_hash :fee_status
 
   validates :image, presence: true
   validates :item_name,      presence: true, length: { maximum: 40 }
