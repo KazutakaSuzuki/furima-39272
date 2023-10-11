@@ -115,14 +115,17 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <div class="subtitle" >
-      新規投稿商品
-    <% if @items.exists? %>
+      <div class="subtitle">
+        新規投稿商品
       </div>
+    <% if @items.exists? %>
         <li class='item-lists'>
           <% @items.each do |item| %>
             <div class="item-img-content">
               <%= link_to image_tag(item.image, class: "item-img") %>
+                <%#<div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div%>
               <div class='item-info'>
                 <h3 class='item-name'>
                 <%= link_to item.item_name, class: "item-name" %>
@@ -139,7 +142,6 @@
           <% end %>
         </li>
         <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-        <% else %>
         <li class='list'>
           <%= link_to "#" do %>
           <div class='item-img-content'>
@@ -170,6 +172,7 @@
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
+    <% else %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
