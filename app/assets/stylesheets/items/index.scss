@@ -248,6 +248,7 @@ a {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
+
 }
 
 
@@ -258,6 +259,7 @@ a {
 .item-img {
   width: 33vh;
   height: 33vh;
+  margin: 0px 15px 0px 15px;
 }
 
 .sold-out {
@@ -284,18 +286,24 @@ a {
 
 .item-name {
   font-size: 2.5vh;
+  margin: 0px 10px 0px 10px;
+
 }
 
 .item-price {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
+  margin: 0px 10px 0px 10px;
+
 }
 
 
 .star-btn {
   display: flex;
   align-items: center;
+  margin: 0px 0px 0px 30px;
+
 }
 
 .star-icon {
