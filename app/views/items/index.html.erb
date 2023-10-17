@@ -122,18 +122,20 @@
         <li class='item-lists'>
           <% @items.each do |item| %>
             <div class="item-img-content">
-              <%= link_to image_tag(item.image, class: "item-img") %>
+              <%= link_to image_tag(item.image), item_path(item.id), class: "item-img" %>
                 <%#<div class='sold-out'>
                   <span>Sold Out!!</span>
-                </div%>
+                </div>%>
               <div class='item-info'>
                 <h3 class='item-name'>
-                <%= link_to item.item_name, class: "item-name" %>
+                  <%#= link_to "#" do %>
+                  <%# item.item_name, item_path(@item.id), class: "item-name" %>
+                  <%# end %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= link_to item.price %>円<br><%= link_to item.fee_status.name %></span>
+                  <span><%= link_to item.price, item_path(item.id) %>円<br><%= link_to item.fee_status.name %></span>
                   <div class='star-btn'>
-                    <%= image_tag "star.png", class:"star-icon" %>
+                    <%= link_to (image_tag "star.png"), item_path(item.id), class: "star-icon" %>
                   <span class='star-count'>0</span>
                   </div>
                 </div>
@@ -147,7 +149,7 @@
       </div>
     <% else %>
       <li class='list'>
-        <%#= link_to '#' do %>
+        <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -164,8 +166,7 @@
         <% end %>
       </li>
     <% end %>
-     </ul>
-   </div>
+  </div>
   <%# /商品一覧 %>
 </div>
 <%= link_to 'items/new', class: 'purchase-btn' do %>
