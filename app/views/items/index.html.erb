@@ -121,32 +121,34 @@
     <% if @items.exists? %>
         <li class='item-lists'>
           <% @items.each do |item| %>
-            <div class="item-img-content">
-              <%= link_to image_tag(item.image), item_path(item.id), class: "item-img" %>
-                <%#<div class='sold-out'>
-                  <span>Sold Out!!</span>
-                </div>%>
-              <div class='item-info'>
-                <h3 class='item-name'>
-                  <%#= link_to "#" do %>
-                  <%# item.item_name, item_path(@item.id), class: "item-name" %>
-                  <%# end %>
-                </h3>
-                <div class='item-price'>
-                  <span><%= link_to item.price, item_path(item.id) %>円<br><%= link_to item.fee_status.name %></span>
-                  <div class='star-btn'>
-                    <%= link_to (image_tag "star.png"), item_path(item.id), class: "star-icon" %>
-                  <span class='star-count'>0</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+              <%= link_to item_path(item.id), class: "item-img-content" do %>
+                <%= image_tag(item.image, class: "item-img") %>
+
+
+                  <%#<div class='sold-out'>
+                      <span>Sold Out!!</span>
+                  </div>%>
+
+                    <div class='item-info'>
+                      <h3 class='item-name'>
+                        <%= item.item_name %>
+                      </h3>
+                      <div class='item-price'>
+                        <span><%= item.price %>円<br><%= item.fee_status.name %></span>
+                        <div class='star-btn'>
+                          <%= image_tag "star.png", class: "star-icon" %>
+                          <span class='star-count'>0</span>
+                        </div>
+                      </div>
+                    </div>
+              <% end %>
           <% end %>
+
         </li>
 
 
 
-      </div>
     <% else %>
       <li class='list'>
         <%= link_to '#' do %>
