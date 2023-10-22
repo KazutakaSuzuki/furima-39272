@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_instore, except: [:index, :show]
+  before_action :find_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -19,7 +20,22 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+    return unless @item.user_id != current_user.id
+
+    redirect_to root_path
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.update
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+
+    end
   end
 
   private
@@ -33,5 +49,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :item_name, :explain, :category_id, :quality_id, :fee_status_id, :prefecture_id,
                                  :schedule_id, :price).merge(user_id: current_user.id)
+  end
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 end
