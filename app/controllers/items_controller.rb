@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_instore, except: [:index, :show]
-  before_action :find_item, only: [:show, :edit]
+  before_action :find_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -29,9 +29,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
-    if @item.save
+    if @item.update
       redirect_to item_path(@item.id)
     else
       render :edit
