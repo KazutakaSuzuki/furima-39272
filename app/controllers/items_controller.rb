@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_instore, except: [:index, :show]
-  before_action :find_item, only: [:show, :edit, :update]
+  before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -34,7 +34,14 @@ class ItemsController < ApplicationController
       redirect_to item_path(@item.id)
     else
       render :edit
+    end
+  end
 
+  def destroy
+    if current_user.id == @item.user_id
+      redirect_to root_path if @item.destroy
+    else
+      render :show
     end
   end
 
