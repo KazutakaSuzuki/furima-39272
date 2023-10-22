@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
 
   def edit
     return unless @item.user_id != current_user.id
+
     redirect_to root_path
   end
 
@@ -36,18 +37,19 @@ class ItemsController < ApplicationController
     end
   end
 
-    def destroy
-      if @item.destroy
-        render :index
-      else
-        redirect_to item_path(@item.id)
-      end
+  def destroy
+    if @item.destroy
+      render :index
+    else
+      redirect_to item_path(@item.id)
     end
+  end
 
   private
 
   def move_to_instore
     return if user_signed_in?
+
     redirect_to new_user_session_path
   end
 
