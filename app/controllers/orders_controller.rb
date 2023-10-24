@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+
   def create
     @order = Order.new(order_params)
     if @order.valid?
@@ -12,6 +13,9 @@ class OrdersController < ApplicationController
     else
       render 'index'
     end
+  end
+
+  def show
   end
 
   private

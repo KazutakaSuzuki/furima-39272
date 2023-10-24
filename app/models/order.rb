@@ -4,7 +4,8 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :
   has_many :
-  belongs_to :
-  belongs_to :
+  belongs_to 
+  belongs_to :item
+  has_one :
 
 end
