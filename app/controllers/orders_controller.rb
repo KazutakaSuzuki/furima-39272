@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
+
 
   def index
     @item = Item.find(params[:item_id])
@@ -7,8 +10,14 @@ class OrdersController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @order = @item.orders.create(order_params)
     @order = OrderAddress.new(order_params)
+    if @order.valid?
+      pay_item
+      @order.save
+      redirect_to root_path      
+    else
+      render :index
+    end
 
   end
 
