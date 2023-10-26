@@ -1,8 +1,8 @@
 class OrderAddress < ApplicationRecord
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture, :city, :add_number, 
+  attr_accessor :postal_code, :prefecture_id, :city, :add_number, 
                 :building, :phone_number, :item_id, :user_id, :token
-  belongs_to :prefecture
+  
   
   with_options presence: true do
 
@@ -12,15 +12,15 @@ class OrderAddress < ApplicationRecord
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid." }
     validates :user_id
     validates :item_id
+    validates :prefecture_id,  numericality: { other_than: 1, message: "can't be blank" }
   
     validates :token
   end
-    validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
 
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(postal_code: postal_code, prefecture: prefecture, city: city, add_number: add_number, 
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, add_number: add_number, 
                    building: building, phone_number: phone_number, order_id: order.id)
   end
 end
