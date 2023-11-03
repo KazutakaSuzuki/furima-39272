@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
   before_action :find_item, only: [:index, :create]
   before_action :prevent_url, only: [:index, :create]
 
+
+
+
   def index
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
@@ -10,10 +13,11 @@ class OrdersController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
+ 
     @order_address = OrderAddress.new(order_params)
 
     if @order_address.valid?
-      pay_item # PAYJPでのクレカを使用した商品購入の実装
+      pay_item
       @order_address.save
       redirect_to root_path      
     else
@@ -42,7 +46,6 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  # 購買条件(自身の出品商品を買えない/購入済みを買えない)を実装
   def prevent_url
     if @item.user_id == current_user.id || @item.order.present?
       redirect_to root_path
