@@ -43,7 +43,8 @@
           <label class="form-text">カード情報</label>
           <span class="indispensable">必須</span>
         </div>
-   <div id="number-form" class="input-default"></div>        <div class='available-card'>
+        <div id="number-form" class="input-default"></div>
+        <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
           <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
@@ -56,16 +57,18 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-<div id="expiry-form" class="input-default"></div>        </div>
+          <div id="expiry-form" class="input-default"></div>
+        </div>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
-<div id="cvc-form" class="input-default"></div>      </div>
+        <div id="cvc-form" class="input-default"></div>
+      </div>
     </div>
-
+    <%# [f.text_form]の形から[div id=""]へ記述変更 %>
     
 
     <div class='shipping-address-form'>

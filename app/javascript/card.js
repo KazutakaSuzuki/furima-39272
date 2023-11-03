@@ -5,7 +5,7 @@ const pay = () => {
   const expiryElement = elements.create('cardExpiry');
   const cvcElement = elements.create('cardCvc');
 
-  //
+  //環境変数を設定した同じ画面のターミナルでrails sをしないと認識しない。//
   
   numberElement.mount('#number-form');
   expiryElement.mount('#expiry-form');
