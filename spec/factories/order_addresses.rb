@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :order_address do
-
-
     user_id               { 10 }
     item_id               { 10 }
 
@@ -12,6 +10,5 @@ FactoryBot.define do
     building              { '〇〇アパート' }
     phone_number          { '09000009999' }
     token { '3530111333300000' }
-
   end
 end

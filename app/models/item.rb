@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :schedule
   belongs_to_active_hash :fee_status
-  
+
   has_one_attached :image
 
   validates :image, presence: true

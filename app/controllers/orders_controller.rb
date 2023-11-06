@@ -15,22 +15,21 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item # PAYJPでのクレカを使用した商品購入の実装
       @order_address.save
-      redirect_to root_path      
+      redirect_to root_path
     else
       render 'index'
     end
-
   end
 
   private
-  def order_params
-    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :add_number, 
-      :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
 
+  def order_params
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :add_number,
+                                          :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,           # 商品の値段
       card: order_params[:token],    # トークン
@@ -44,9 +43,8 @@ class OrdersController < ApplicationController
 
   # 購買条件(自身の出品商品を買えない/購入済みを買えない)を実装
   def prevent_url
-    if @item.user_id == current_user.id || @item.order.present?
-      redirect_to root_path
-    end
-  end
+    return unless @item.user_id == current_user.id || @item.order.present?
 
+    redirect_to root_path
+  end
 end

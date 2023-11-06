@@ -21,12 +21,12 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号にハイフンがないとき' do
         @order_address.postal_code = '9990000'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '郵便番号の数字が少ないとき' do
         @order_address.postal_code = '999'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県が入ってないとき' do
         @order_address.prefecture_id = ''
@@ -48,7 +48,6 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
-
     end
   end
 end
