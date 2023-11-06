@@ -65,9 +65,8 @@ class ItemsController < ApplicationController
 
   def item_purchase
     @item = Item.find(params[:id])
-     if @item.order.present?
-      redirect_to root_path
-     end
-  end
+    return unless @item.order.present?
 
+    redirect_to root_path
+  end
 end
