@@ -16,6 +16,34 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.building = ''
         @order_address.valid?
       end
+      it 'user_idが空でなければ購入できる' do
+        @order_address.user_id = '1'
+        @order_address.valid?
+      end
+      it 'item_idが空でなければ購入できる' do
+        @order_address.item_id = '1'
+        @order_address.valid?
+      end
+      it '都道府県が「---」ではなく、かつ空でなければ購入できる' do
+        @order_address.prefecture_id = '2'
+        @order_address.valid?
+      end
+      it '郵便番号が「「3桁＋ハイフン＋4桁」の組み合わせであれば購入できる' do
+        @order_address.postal_code = '222-7777'
+        @order_address.valid?
+      end
+      it '市区町村が空でなければ購入できる' do
+        @order_address.city = '山形市'
+        @order_address.valid?
+      end
+      it '番地名が空でなければ購入できる' do
+        @order_address.add_number = '城南区22-2'
+        @order_address.valid?
+      end
+      it '電話番号が空でなく、10か11桁ならば購入できる' do
+        @order_address.phone_number = '11111111111'
+        @order_address.valid?
+      end
     end
 
     context '商品を購入できないとき' do
