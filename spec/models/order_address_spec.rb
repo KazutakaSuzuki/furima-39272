@@ -14,7 +14,7 @@ RSpec.describe OrderAddress, type: :model do
       end
       it '建物名が空でも購入できる' do
         @order_address.building = ''
-        @order_address.valid?
+        expect(@order_address).to be_valid
       end
       it 'user_idが空でなければ購入できる' do
         @order_address.user_id = '1'
