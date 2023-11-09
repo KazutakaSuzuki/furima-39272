@@ -37,7 +37,7 @@
 | postal_code    | string     | NULL: false                    |
 | prefecture_id  | integer    | NULL: false                    |
 | city           | string     | NULL: false                    |
-| address        | string     | NULL: false                    |
+| add_number     | string     | NULL: false                    |
 | building       | string     |                                |
 | phone_number   | string     | NULL: false                    |
 ## Assosiation
